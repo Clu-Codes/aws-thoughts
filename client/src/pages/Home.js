@@ -12,8 +12,11 @@ const Home = () => {
     const fetchData = async () => {
       const res = await fetch('/api/users');
       const data = await res.json();
+      console.log(data);
       // sort the array by createdAt property ordered by descending values
-      const orderData = data.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1);
+      const orderData = data.sort(function(a, b) {
+       return b.createdAt - a.createdAt;
+      });
       setThoughts(orderData);
       setIsLoaded(true);
     }
