@@ -2,8 +2,7 @@ const AWS = require("aws-sdk");
 const fs = require("fs");
 
 AWS.config.update({
-    region: "us-east-2",
-    endpoint: "http://localhost:8000"
+    region: "us-east-2"
 });
 
 // use of DocumentClient class enables use of Javascript Objects as arguments and return native JS types. This constructor helps map objects, reducing impedance mismatching and speeds up development. 
