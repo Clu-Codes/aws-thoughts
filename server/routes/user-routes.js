@@ -39,8 +39,8 @@ router.get('/users/:username', (req, res) => {
         ExpressionAttributeValues: {
             ":user": req.params.username
         },
-        ProjectionExpression: "#th, #ca",
-        ScanIndexForward: false
+        ProjectionExpression: "#un, #th, #ca, #img", // add the image to the databse response
+        ScanIndexForward: false //false makes the order descending (true is defualt)
     };
 
     dynamodb.query(params, (err, data) => {
@@ -55,6 +55,7 @@ router.get('/users/:username', (req, res) => {
 
 // create new user at /api/users
 router.post('/users', (req, res) => {
+    console.log(req.body);
     const params = {
         TableName: table,
         Item: {

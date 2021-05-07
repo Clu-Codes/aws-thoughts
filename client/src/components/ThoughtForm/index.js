@@ -19,7 +19,7 @@ const ThoughtForm = () => {
         })
         if (!res.ok) throw new Error(res.statusText);
         const postResponse = await res.json();
-        setFormState({ ...formState, image: postResponse.location })
+        setFormState({ ...formState, image: postResponse.Location })
         console.log("postImage: ", postResponse.Location);
         return postResponse.Location;
       } catch (error) {
@@ -42,6 +42,7 @@ const ThoughtForm = () => {
     event.preventDefault();
     // POST method with formState
     const postData = async () => {
+      console.log("POSTDATA CONSOLE.LOG LINE 45", formState)
       const res = await fetch('/api/users', {
         method: 'POST',
         headers: {
